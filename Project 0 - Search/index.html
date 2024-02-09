@@ -9,29 +9,11 @@
         <form action="https://www.google.com/search">
             <input type="text" name="q">
             <input type="submit" value="Google Search">
+            <input type="submit" value="I'm Feeling Lucky" name="btnI">
         </form>
 
-        <!--- Performing an image search - uses tbm=isch --->
-        <form action="https://www.google.com/search">
-            <input type="text" name="q">
-            <input type="hidden" name="tbm" value="isch">
-            <input type="submit" value="Google Image Search">
-        </form>
+        <a href="image_search.html">Try Image Search</a>
+        <a href="advanced_search.html">Try Advanced Search</a>
 
-        <!--- Performing an Im feeling lucky search - uses btnI --->
-        <form action="https://www.google.com/search">
-            <input type="text" name="q">
-            <input type="hidden" name="btnI">
-            <input type="submit" value="I'm Feeling Lucky">
-        </form>
-
-        <!--- Performing an Advanced Search --->
-        <form action="https://www.google.com/search">\
-            <input type="text" placeholder="All These Words..." name="as_q">
-            <input type="text" placeholder="This Exact One Phrase..." name="as_epq">
-            <input type="text" placeholder="Any of These Words..." name="as_oq">
-            <input type="text" placeholder="None of These Words..." name="as_eq">
-            <input type="submit" value="Advanced Search">
-        </form>
     </body>
 </html>
