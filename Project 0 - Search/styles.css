@@ -1,0 +1,40 @@
+body{
+
+    /* Content Design */
+    background-color: white;
+    margin: 0;
+    height: 100vh;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.search_box{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(242, 242, 242);
+    width: 500px;
+    height: 40px;
+    border: 3px;
+    border-radius: 25px;
+    border-color: #000;
+}
+
+.submit_button{
+    display: flex;
+    justify-content: center;
+}
+
+.classic_search, .feeling_lucky_search{
+    margin: 25px 10px;
+    background-color: rgb(238, 241, 242);
+    border: 0px;
+    border-radius: 3px;
+    width: 125px;
+    height: 32px;
+}

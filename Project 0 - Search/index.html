@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>
-        iSearch - by Antonio Hus
-    </title>
+    <head>
+        <title>
+            iSearch - by Antonio Hus
+        </title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
     <body>
+        <div class="container">
 
-        <!--- Performing a normal search - https://www.google.com/search?q=Example --->
-        <form action="https://www.google.com/search">
-            <input type="text" name="q">
-            <input type="submit" value="Google Search">
-            <input type="submit" value="I'm Feeling Lucky" name="btnI">
-        </form>
+            <!--- Performing a normal search - https://www.google.com/search?q=Example --->
+            <form class="search_form" action="https://www.google.com/search">
+                <input class="search_box" type="text" name="q">
+                <div class="submit_button">
+                    <input class="classic_search" type="submit" value="Google Search">
+                    <input class="feeling_lucky_search" type="submit" value="I'm Feeling Lucky" name="btnI">
+                </div>
+            </form>
 
-        <a href="image_search.html">Try Image Search</a>
-        <a href="advanced_search.html">Try Advanced Search</a>
+            <a href="image_search.html">Try Image Search</a>
+            <a href="advanced_search.html">Try Advanced Search</a>
 
+        </div>
     </body>
 </html>
