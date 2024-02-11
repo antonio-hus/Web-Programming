@@ -81,28 +81,31 @@
 
 /* MAIN BODY DESIGN*/
 body{
-    background-color: white;
-    margin: 0;
     height: 77.9vh;
+    margin: 0;
+
+    background-color: white;
 }
 
 .container{
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
 }
 
 .container p{
+    margin-top: 25px;
+
     font-size: 11px;
     font-family: Arial, Helvetica, sans-serif;
-    margin-top: 25px;
 }
 
 .container p a{
-    color: rgb(68, 68, 121);
     text-decoration: none;
+    color: rgb(68, 68, 121);
 }
 
 .logo{
@@ -111,28 +114,27 @@ body{
 }
 
 .search_box{
+    width: 500px;
+    height: 40px;
+
     display: flex;
     flex-direction: column;
+
+    padding-left: 50px;
+
+    border: 1px solid rgb(238, 241, 242);
+    border-radius: 25px;
+
     background-color: rgb(255, 255, 255);
-    background-image: url("./images/search_icon.png");
+    background-image: url(".././images/search_icon.png");
     background-size: 12px;
     background-position: 15px 15px;
     background-repeat: no-repeat;
-    width: 500px;
-    height: 40px;
-    border: 1px solid rgb(238, 241, 242);
-    border-radius: 25px;
-    padding-left: 50px;
 }
 
 .search_box:hover, .search_box:focus{
     background-color: rgb(238, 241, 242);
     border-color: rgb(238, 241, 242);
-}
-
-.submit_button{
-    display: flex;
-    justify-content: center;
 }
 
 .classic_search, .feeling_lucky_search{
@@ -146,4 +148,9 @@ body{
 
 .classic_search:hover, .feeling_lucky_search:hover{
     border: 1px solid rgb(218, 221, 222);
+}
+
+.submit_button{
+    display: flex;
+    justify-content: center;
 }
