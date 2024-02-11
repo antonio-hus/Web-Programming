@@ -1,19 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
-        <title>
-            iSearch Advanced
-        </title>
-        <link rel="stylesheet" type="text/css" href="styles.css">
+        <title> Google Advanced</title>
+        <link rel="stylesheet" type="text/css" href="./styles/advanced_search_style.css">
     </head>
+
     <body>
-        <!--- Performing an Advanced Search --->
-        <form action="https://www.google.com/search">\
-            <input type="text" placeholder="All These Words..." name="as_q">
-            <input type="text" placeholder="This Exact One Phrase..." name="as_epq">
-            <input type="text" placeholder="Any of These Words..." name="as_oq">
-            <input type="text" placeholder="None of These Words..." name="as_eq">
-            <input type="submit" value="Advanced Search">
-        </form>
+
+        <!-- HEADER -->
+        <div class="header">
+            <img class="logo" src="./images/google_logo.png" alt="Google Logo">
+            <div class="navigation">
+                <a href="index.html">Back to Google Search</a>
+                <img src="./images/options_icon.png" alt="Options">
+                <button>Connect</button>
+            </div>
+        </div>
+
+        <!-- MAIN CONTAINER -->
+        <div class="container">
+
+            <!-- Upper Details -->
+            <div class="upper_body">
+                <h1>Advanced Search</h1>
+                <div class="line_break"></div>
+            </div>
+
+            <!--- Performing an Advanced Search --->
+            <form class="search_form" action="https://www.google.com/search">
+
+                <p>Find Pages With ...</p>
+
+                <div class="field">
+                    <div class="field_requirments">
+                        <p>All These Words:</p>
+                        <p>This Exact One Phrase:</p>
+                        <p>Any of These Words:</p>
+                        <p>None of These Words:</p>
+                    </div>
+
+                    <div class="field_inputs">
+                        <input type="text" name="as_q">
+                        <input type="text" name="as_epq">
+                        <input type="text" name="as_oq">
+                        <input type="text" name="as_eq">
+                    </div>
+                    <div class="field_details">
+                        
+                    </div>
+                </div>
+
+                <input class="submit_button" type="submit" value="Advanced Search">
+
+            </form>
+        
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="high_footer">
+                <p>Romania</p>
+            </div>
+            <div class="line_break"></div>
+            <div class="low_footer">
+                <div class="low_footer_start">
+                    <p>About</p>
+                    <p>Advertising</p>
+                    <p>Business</p>
+                    <p>How Search works</p>
+                </div>
+                <div class="low_footer_end">
+                    <p>Privacy</p>
+                    <p>Terms</p>
+                    <p>Settings</p>
+                </div>
+            </div>
+        </div>
+
     </body>
+
 </html>
