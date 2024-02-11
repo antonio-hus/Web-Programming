@@ -1,26 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
+    <!-- HEAD -->
     <head>
-        <title>
-            iSearch - by Antonio Hus
-        </title>
+        <title>Google - by Antonio Hus</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
+
+    <!-- BODY -->
     <body>
+
+        <!-- HEADER -->
+        <div class="header">
+            <a href="advanced_search.html">Advanced Search</a>
+            <a href="image_search.html">Images</a>
+            <img src="./images/options_icon.png" alt="Options">
+            <button>Connect</button>
+        </div>
+
+        <!-- MAIN CONTAINER -->
         <div class="container">
+            
+            <!-- Google Logo -->
+            <img class="logo" src="./images/google_logo.png" alt="Google Logo">
 
             <!--- Performing a normal search - https://www.google.com/search?q=Example --->
             <form class="search_form" action="https://www.google.com/search">
+
                 <input class="search_box" type="text" name="q">
                 <div class="submit_button">
+
                     <input class="classic_search" type="submit" value="Google Search">
                     <input class="feeling_lucky_search" type="submit" value="I'm Feeling Lucky" name="btnI">
+                    
                 </div>
+
             </form>
 
-            <a href="image_search.html">Try Image Search</a>
-            <a href="advanced_search.html">Try Advanced Search</a>
-
+            <p> Google offered in: <a href="#">Română</a> <a href="#">Deutsch</a></p>
         </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="high_footer">
+                <p>Romania</p>
+            </div>
+            <div class="line_break"></div>
+            <div class="low_footer">
+                <div class="low_footer_start">
+                    <p>About</p>
+                    <p>Advertising</p>
+                    <p>Business</p>
+                    <p>How Search works</p>
+                </div>
+                <div class="low_footer_end">
+                    <p>Privacy</p>
+                    <p>Terms</p>
+                    <p>Settings</p>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>

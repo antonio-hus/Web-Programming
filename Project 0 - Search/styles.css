@@ -1,9 +1,89 @@
-body{
+/* HEADER DESIGN*/
+.header{
 
-    /* Content Design */
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+
+    margin: 0px 15px;
+
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header a{
+    margin: 0px 5px;
+
+    color: rgb(68, 68, 121);
+    text-decoration: none;
+}
+
+.header img{
+    margin: 0px 5px;
+}
+
+.header button{
+    background-color: #4285f4;
+    padding: 10px 20px;
+    margin: 0px 5px;
+
+    border: 0px;
+    border-radius: 3px;
+
+    color: white;
+}
+
+/* FOOTER DESIGN*/
+.footer{
+    height:12vh;
+    background-color: rgb(238, 241, 242);
+
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer .line_break{
+    border-top: 1px solid rgb(27, 27, 27);
+}
+
+.footer .high_footer{
+    height: 6vh;
+
+    display: flex;
+    align-items: center;
+    
+    margin-left: 30px;
+}
+
+.footer .low_footer{
+    height: 6vh;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.footer .low_footer .low_footer_start, .low_footer_end{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.footer .low_footer .low_footer_start p, .low_footer_end p {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+/* MAIN BODY DESIGN*/
+body{
     background-color: white;
     margin: 0;
-    height: 100vh;
+    height: 77.9vh;
 }
 
 .container{
@@ -14,15 +94,40 @@ body{
     height: 100%;
 }
 
+.container p{
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 25px;
+}
+
+.container p a{
+    color: rgb(68, 68, 121);
+    text-decoration: none;
+}
+
+.logo{
+    width: 250px;
+    margin-bottom: 25px;
+}
+
 .search_box{
     display: flex;
     flex-direction: column;
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(255, 255, 255);
+    background-image: url("./images/search_icon.png");
+    background-size: 12px;
+    background-position: 15px 15px;
+    background-repeat: no-repeat;
     width: 500px;
     height: 40px;
-    border: 3px;
+    border: 1px solid rgb(238, 241, 242);
     border-radius: 25px;
-    border-color: #000;
+    padding-left: 50px;
+}
+
+.search_box:hover, .search_box:focus{
+    background-color: rgb(238, 241, 242);
+    border-color: rgb(238, 241, 242);
 }
 
 .submit_button{
@@ -31,10 +136,14 @@ body{
 }
 
 .classic_search, .feeling_lucky_search{
-    margin: 25px 10px;
+    margin: 25px 10px 0px 10px;
     background-color: rgb(238, 241, 242);
     border: 0px;
     border-radius: 3px;
     width: 125px;
     height: 32px;
+}
+
+.classic_search:hover, .feeling_lucky_search:hover{
+    border: 1px solid rgb(218, 221, 222);
 }

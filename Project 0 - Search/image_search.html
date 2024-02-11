@@ -1,17 +1,57 @@
 <!DOCTYPE html>
 <html lang ="en">
+
     <head>
-        <title>
-            iSearch Images
-        </title>
+        <title>Google Images</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
+
     <body>
-        <!--- Performing an image search - uses tbm=isch --->
-        <form action="https://www.google.com/search">
-            <input type="text" name="q">
-            <input type="hidden" name="tbm" value="isch">
-            <input type="submit" value="Google Image Search">
-        </form>
+
+        <!-- HEADER -->
+        <div class="header">
+            <a href="advanced_search.html">Advanced Search</a>
+            <a href="image_search.html">Images</a>
+            <img src="./images/options_icon.png" alt="Options">
+            <button>Connect</button>
+        </div>
+
+        <!-- MAIN CONTAINER -->
+        <div class="container">
+
+            <!-- Google Logo -->
+            <img class="logo" src="./images/google_logo.png" alt="Google Logo">
+
+            <!--- Performing an image search - uses tbm=isch --->
+            <form class="search_form" action="https://www.google.com/search">
+                <input class="search_box" type="text" name="q">
+                <input type="hidden" name="tbm" value="isch">
+            </form>
+
+            <br><br><br><br><br><br>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="high_footer">
+                <p>Romania</p>
+            </div>
+            <div class="line_break"></div>
+            <div class="low_footer">
+                <div class="low_footer_start">
+                    <p>About</p>
+                    <p>Advertising</p>
+                    <p>Business</p>
+                    <p>How Search works</p>
+                </div>
+                <div class="low_footer_end">
+                    <p>Privacy</p>
+                    <p>Terms</p>
+                    <p>Settings</p>
+                </div>
+            </div>
+        </div>
+
     </body>
+
 </html>
