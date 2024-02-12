@@ -6,6 +6,7 @@ The actual features make use of the search-engine's querries.
 
 Potential Improvements:
 - CSS Files Refactoring, using variables.
+- Advanced Search Grid Layout Improvement
 
 Made by Lucian-Antonio Hus
 Last update to this file: 12.02.2024
