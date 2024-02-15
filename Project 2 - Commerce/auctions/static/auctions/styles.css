@@ -1,3 +1,100 @@
+
+/* Main Site Layout*/
+
+html {
+    height: 100%;
+}
+
 body {
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Sidebar / Main Body Sectioning */
+.sidebar {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin-right: 30px;
+    padding: 40px;
+
+    background-color: #2f94b6;
+    color:white;
+
+}
+
+.sidebar .sign-status {
+    margin-top: -15px;
+}
+
+.sidebar .nav{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+
+    margin-left: -15px;
+}
+
+.sidebar .nav .nav-item {
+    margin-bottom: -15px;
+}
+
+.sidebar .nav .nav-item a{
+    color:white;
+}
+
+
+.mainbody {
+    padding: 40px;
+}
+
+/* Listing Preview Styling */
+.listing-preview-display {
+
+    width: 600px;
+
+    display: flex;
+    flex-direction: column;
+
     padding: 10px;
+    margin-bottom: 15px;
+    border: solid 1px #575757;
+}
+
+.listing-preview-display .listing-preview-title {
+    font-size: 24px;
+    color: black;
+}
+
+.listing-preview-display .listing-preview-title:hover {
+    color: #1c1c1c;
+}
+
+.listing-preview-display .listing-preview-description {
+    font-size: 14px;
+    margin-top: -18px;
+}
+
+.listing-preview-display .listing-preview-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.listing-preview-display .listing-preview-price span {
+    font-weight: bold;
+}
+
+.listing-preview-display .listing-preview-start-price, .listing-preview-current-price {
+    justify-self: start;
+    margin-right: 25px;
 }

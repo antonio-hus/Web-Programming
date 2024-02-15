@@ -3,5 +3,15 @@
 {% block body %}
     <h2>Active Listings</h2>
 
-    TODO
+    {% for listing in listings %}
+        <div class="listing-preview-display">
+            <p class="listing-preview-title">{{ listing.title }}</p>
+            <p class="listing-preview-description">Description: {{ listing.description }}</p>
+            <div class="listing-preview-price">
+                <p class="listing-preview-start-price">Starting price: <span>{{ listing.start_price }}$</span></p>
+                <p class="listing-preview-current-price">Current price: <span>{{ listing.current_price }}$</span></p>
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}
