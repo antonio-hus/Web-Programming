@@ -34,6 +34,10 @@ body {
     margin-top: -15px;
 }
 
+.sidebar .user-option {
+    margin-top: 30px;
+}
+
 .sidebar .nav{
 
     display: flex;
@@ -81,7 +85,6 @@ body {
 
 .listing-preview-display .listing-preview-description {
     font-size: 14px;
-    margin-top: -18px;
 }
 
 .listing-preview-display .listing-preview-price {
@@ -97,4 +100,30 @@ body {
 .listing-preview-display .listing-preview-start-price, .listing-preview-current-price {
     justify-self: start;
     margin-right: 25px;
+}
+
+/* Product Page Styling */
+.product-header {
+
+}
+
+.product-header span {
+    font-weight: bold;
+    color: #2f94b6;
+}
+
+.product-body {
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 50px;
+}
+
+.product-body img {
+    width: 500px;
+    height: 275px;
+}
+
+.product-body .product-details {
+    margin-left: 50px
 }

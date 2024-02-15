@@ -5,7 +5,7 @@
 
     {% for listing in listings %}
         <div class="listing-preview-display">
-            <p class="listing-preview-title">{{ listing.title }}</p>
+            <a href="{% url 'product_page' product_id=listing.id %}" class="listing-preview-title">{{ listing.title }}</a>
             <p class="listing-preview-description">Description: {{ listing.description }}</p>
             <div class="listing-preview-price">
                 <p class="listing-preview-start-price">Starting price: <span>{{ listing.start_price }}$</span></p>

@@ -14,6 +14,11 @@
                 <div class="sign-status">
                     {% if user.is_authenticated %}
                         Signed in as <strong>{{ user.username }}</strong>.
+                        <div class="user-option">
+                            <p>Create Listing</p>
+                            <p>Watchlist</p>
+                            <p>Categories</p>
+                        </div>
                     {% else %}
                         Not signed in.
                     {% endif %}

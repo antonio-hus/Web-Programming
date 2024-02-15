@@ -1,0 +1,53 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <div class="product-header">
+        <h2>Ongoing Auction</h2>
+        <p>Posted by <span>{{ product.seller.username }}</span></p>
+    </div>
+
+    <hr>
+    <div class="product-body">
+        <img src="https://cdn.shopify.com/app-store/listing_images/bba91cb747a794fddda7c4269609671c/promotional_image/CJrg-LWjjfsCEAE=.png?height=720&width=1280" alt="Product Image">
+        <div class="product-details">
+            <h5>{{ product.title }}</h5>
+            <p class="product-category">Category: {{ product.category.category }}</p>
+            <p>Description: {{ product.description }}</p>
+
+            <div class="bids">
+                <div class="prices">
+                    <p>Starting Price: <span>{{ product.start_price }}$</span></p>
+                    <p>Current Price: <span>{{ product.current_price }}$</span></p>
+                </div>
+                <div class="place-bid-box">
+                    <form>
+                        <input type="number" step=".01" pattern="^\d+(?:\.\d{1,2})?$"
+                               min={{ product.current_price }} placeholder="{{ product.current_price }}">
+                        <input type="submit" value="Place Bid">
+                    </form>
+                    <a href="{% url 'index' %}">Back to Listings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="comment-box">
+        {% for comment in comments%}
+            <div class="comment">
+                <div class="main-info">
+                    <p>{{ comment.reviewer.username }}</p>
+                    <p>{{ comment.rating }}</p>
+                </div>
+                <div class="extended-info">
+                    <p>{{ comment.title }}</p>
+                    <p>{{ comment.description }}</p>
+                </div>
+            </div>
+        {% empty %}
+            <p>No comments to display.</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

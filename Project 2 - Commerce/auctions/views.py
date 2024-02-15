@@ -62,3 +62,9 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auctions/register.html")
+
+
+def product(request, product_id):
+    the_product = Listing.objects.filter(id=product_id).first()
+    comments = the_product.comments.all()
+    return render(request, "auctions/listing.html", {"product": the_product, "comments": comments})
