@@ -5,7 +5,7 @@ from django.db import models
 
 # Defining the models
 class User(AbstractUser):
-    pass
+    wishlist = models.ManyToManyField('Listing', blank=True, null=True)
 
 
 class ProductCategory(models.Model):
@@ -67,3 +67,4 @@ class Comment(models.Model):
     title = models.CharField(max_length=64)
     description = models.CharField(max_length=256)
     # TODO: Add photo option for comment
+

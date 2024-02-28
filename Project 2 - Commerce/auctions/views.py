@@ -78,7 +78,16 @@ def register(request):
 def product(request, product_id):
     the_product = Listing.objects.filter(id=product_id).first()
     comments = the_product.comments.all()
-    return render(request, "auctions/listing.html", {"product": the_product, "comments": comments})
+    wishlist_status = False
+    if request.user.is_authenticated:
+        wishlist_status = request.user.wishlist.filter(id=product_id).exists()
+    if request.method == "POST":
+        pass
+    return render(request, "auctions/listing.html", {"product": the_product, "comments": comments, "wishlist_status": wishlist_status} )
+
+
+def close_listing(request):
+    pass
 
 
 def add(request):
@@ -93,7 +102,18 @@ def add(request):
             start_bid = form.cleaned_data["start_bid"]
             current_bid = start_bid
 
-            new_listing = Listing(seller=seller, title=title, description=description, category=category, photo=image_url, start_price=start_bid, current_price=current_bid)
+            if category and image_url:
+                new_listing = Listing(seller=seller, title=title, description=description, category=category, photo=image_url, start_price=start_bid, current_price=current_bid)
+            elif category:
+                new_listing = Listing(seller=seller, title=title, description=description, category=category,
+                                      start_price=start_bid, current_price=current_bid)
+            elif image_url:
+                new_listing = Listing(seller=seller, title=title, description=description,
+                                      photo=image_url, start_price=start_bid, current_price=current_bid)
+            else:
+                new_listing = Listing(seller=seller, title=title, description=description,
+                                      start_price=start_bid, current_price=current_bid)
+
             new_listing.save()
             return HttpResponseRedirect(reverse("index"))
     else:
@@ -102,7 +122,21 @@ def add(request):
 
 
 def watchlist(request):
-    return render(request, "auctions/watchlist.html")
+    user = request.user
+    items = user.wishlist.all()
+    return render(request, "auctions/watchlist.html", {"items": items})
+
+
+def add_wishlist(request):
+    if request.method == "POST":
+        product_id = request.POST.get('product_id')
+        product = Listing.objects.filter(id=product_id).first()
+        if product:
+            if not request.user.wishlist.filter(id=product_id).exists():
+                request.user.wishlist.add(product)
+            else:
+                request.user.wishlist.remove(product)
+    return HttpResponseRedirect(reverse('watchlist'))
 
 
 def categories(request):

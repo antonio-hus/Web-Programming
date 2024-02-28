@@ -3,37 +3,73 @@
 {% block body %}
 
     <div class="product-header">
-        <h2>Ongoing Auction</h2>
-        <p>Posted by <span>{{ product.seller.username }}</span></p>
+        <h2>{{ product.title }}</h2>
+        <a href="{% url 'index' %}">Back to Listings</a>
     </div>
 
     <hr>
     <div class="product-body">
         <img src="{{ product.photo }}" alt="Product Image">
         <div class="product-details">
-            <h5>{{ product.title }}</h5>
-            <p class="product-category">Category: {{ product.category.category }}</p>
-            <p>Description: {{ product.description }}</p>
+            <div class="upper-container">
 
-            <div class="bids">
-                <div class="prices">
-                    <p>Starting Price: <span>{{ product.start_price }}$</span></p>
-                    <p>Current Price: <span>{{ product.current_price }}$</span></p>
-                </div>
-                <div class="place-bid-box">
-                    <form>
-                        <input type="number" step=".01" pattern="^\d+(?:\.\d{1,2})?$"
-                               min={{ product.current_price }} placeholder="{{ product.current_price }}">
-                        <input type="submit" value="Place Bid">
+                {% if user.username == product.seller.username %}
+                    <div>Closing price: {{ product.current_price }}</div>
+                    <form action="{% url 'close_listing' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Close Auction">
                     </form>
-                    <a href="{% url 'index' %}">Back to Listings</a>
+                {% else %}
+                    <p>Description: {{ product.description }}</p>
+                    {% if user.is_authenticated %}
+                        <div class="watchlist-box">
+                            {% if wishlist_status %}
+                                <form action="{% url 'add_wishlist' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                                    <input type="submit" value="Remove from Wishlist">
+                                </form>
+                            {% else %}
+                                <form action="{% url 'add_wishlist' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                                    <input type="submit" value="Add to Wishlist">
+                                </form>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
                 </div>
-            </div>
+                <div class="lower-container">
+                    <div class="bids">
+                        {% if user.is_authenticated %}
+                            <div class="place-bid-box">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <input type="number" step=".01" pattern="^\d+(?:\.\d{1,2})?$"
+                                           min={{ product.current_price }} placeholder="{{ product.current_price }}">
+                                    <input type="submit" value="Enter">
+                                </form>
+                            </div>
+                        {% else %}
+                            <p>Sign in to bid now</p>
+                        {% endif %}
+                        <hr>
+                        <div class="prices">
+                            <p>Starting Price: <span>{{ product.start_price }}$</span></p>
+                            <p>Current Price: <span>{{ product.current_price }}$</span></p>
+                        </div>
+                    </div>
+                {% endif %}
+                </div>
         </div>
     </div>
 
     <hr>
     <div class="comment-box">
+        <br>
+        <h5>Comments for {{ product.title }}:</h5>
+        <br>
         {% for comment in comments%}
             <div class="comment">
                 <div class="main-info">

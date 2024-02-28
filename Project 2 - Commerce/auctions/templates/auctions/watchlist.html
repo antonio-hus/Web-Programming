@@ -3,4 +3,12 @@
 {% block body %}
     <h1>My Watchlist</h1>
     <a href="{% url 'index' %}">Back to the Listings Page</a>
+    <hr>
+    <div class="products-container">
+        {% for item in items %}
+            <a href="{% url "product_page" product_id=item.id %}" class="product-option">{{ item.title }}</a>
+        {% empty %}
+            <p>No items in the watchlist</p>
+        {% endfor %}
+    </div>
 {% endblock %}
