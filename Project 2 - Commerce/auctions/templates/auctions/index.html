@@ -3,15 +3,25 @@
 {% block body %}
     <h2>Active Listings</h2>
 
-    {% for listing in listings %}
-        <div class="listing-preview-display">
-            <a href="{% url 'product_page' product_id=listing.id %}" class="listing-preview-title">{{ listing.title }}</a>
-            <p class="listing-preview-description">Description: {{ listing.description }}</p>
-            <div class="listing-preview-price">
-                <p class="listing-preview-start-price">Starting price: <span>{{ listing.start_price }}$</span></p>
-                <p class="listing-preview-current-price">Current price: <span>{{ listing.current_price }}$</span></p>
+    <div class="carousel">
+        {% for listing in listings %}
+            <div class="listing-container">
+                <div class="listing-preview-image">
+                    <img src="{{ listing.photo }}" alt="Photo Preview">
+                </div>
+                <hr>
+                <div class="listing-preview-display">
+                    <div>
+                        <a href="{% url 'product_page' product_id=listing.id %}" class="listing-preview-title">{{ listing.title }}</a>
+                        <p class="listing-preview-description">Description: {{ listing.description }}</p>
+                    </div>
+                    <div class="listing-preview-price">
+                        <p class="listing-preview-start-price">Starting price: <span>{{ listing.start_price }}$</span></p>
+                        <p class="listing-preview-current-price">Current price: <span>{{ listing.current_price }}$</span></p>
+                    </div>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 
 {% endblock %}

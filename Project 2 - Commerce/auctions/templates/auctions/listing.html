@@ -9,7 +9,7 @@
 
     <hr>
     <div class="product-body">
-        <img src="https://cdn.shopify.com/app-store/listing_images/bba91cb747a794fddda7c4269609671c/promotional_image/CJrg-LWjjfsCEAE=.png?height=720&width=1280" alt="Product Image">
+        <img src="{{ product.photo }}" alt="Product Image">
         <div class="product-details">
             <h5>{{ product.title }}</h5>
             <p class="product-category">Category: {{ product.category.category }}</p>
@@ -37,12 +37,14 @@
         {% for comment in comments%}
             <div class="comment">
                 <div class="main-info">
-                    <p>{{ comment.reviewer.username }}</p>
-                    <p>{{ comment.rating }}</p>
+                    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fcreazilla.com%2Fnodes%2F3202933-user-circle-icon&psig=AOvVaw07lKTdQIBff3A9QQTB2bWz&ust=1709105210079000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCMDt6aL_yoQDFQAAAAAdAAAAABAD">
+                    <p class="user-name">{{ comment.reviewer.username }}</p>
+                    <hr>
+                    <p class="user-rating">{{ comment.rating }}</p>
                 </div>
                 <div class="extended-info">
-                    <p>{{ comment.title }}</p>
-                    <p>{{ comment.description }}</p>
+                    <p class="title">{{ comment.title }}</p>
+                    <p class="description">{{ comment.description }}</p>
                 </div>
             </div>
         {% empty %}

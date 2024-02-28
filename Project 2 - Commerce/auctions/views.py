@@ -1,12 +1,23 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django import forms
 
-from .models import User, Listing
+from .models import User, Listing, ProductCategory
 
 
+# Forms Below
+class ListingForm(forms.Form):
+    title = forms.CharField(max_length=64, label='', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Title..."}))
+    description = forms.CharField(max_length=256, label='', widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': "Description..."}))
+    image_url = forms.CharField(max_length=256, label='', required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Image Link..."}))
+    category = forms.ModelChoiceField(queryset=ProductCategory.objects.all(), label='', required=False, empty_label="Select a category", widget=forms.Select(attrs={'class': 'form-select'}))
+    start_bid = forms.DecimalField(label='', widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': "Starting Bid..."}))
+
+
+# Views Below
 def index(request):
     listings = Listing.objects.all()
     return render(request, "auctions/index.html", {"listings": listings})
@@ -68,3 +79,38 @@ def product(request, product_id):
     the_product = Listing.objects.filter(id=product_id).first()
     comments = the_product.comments.all()
     return render(request, "auctions/listing.html", {"product": the_product, "comments": comments})
+
+
+def add(request):
+    if request.method == "POST":
+        form = ListingForm(request.POST)
+        if form.is_valid():
+            seller = request.user
+            title = form.cleaned_data["title"]
+            description = form.cleaned_data["description"]
+            category = form.cleaned_data["category"]
+            image_url = form.cleaned_data["image_url"]
+            start_bid = form.cleaned_data["start_bid"]
+            current_bid = start_bid
+
+            new_listing = Listing(seller=seller, title=title, description=description, category=category, photo=image_url, start_price=start_bid, current_price=current_bid)
+            new_listing.save()
+            return HttpResponseRedirect(reverse("index"))
+    else:
+        form = ListingForm()
+    return render(request, "auctions/add.html", {"form": form})
+
+
+def watchlist(request):
+    return render(request, "auctions/watchlist.html")
+
+
+def categories(request):
+    categs = ProductCategory.objects.all()
+    return render(request, "auctions/categories.html", {"categories": categs})
+
+
+def category(request, name):
+    category = ProductCategory.objects.filter(category=name).first()
+    products = Listing.objects.filter(category=category)
+    return render(request, "auctions/category.html", {"category_name": name, "products": products})

@@ -1,0 +1,14 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h1>Products in {{ category_name }}</h1>
+    <a href="{% url 'index' %}" class="back-link">Back to the Listings Page</a>
+    <hr>
+    <div class="products-container">
+        {% for product in products %}
+            <a href="{% url "product_page" product_id=product.id %}" class="product-option">{{ product.title }}</a>
+        {% empty %}
+            <p>Uh oh! There are no listings in this category...</p>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -15,9 +15,9 @@
                     {% if user.is_authenticated %}
                         Signed in as <strong>{{ user.username }}</strong>.
                         <div class="user-option">
-                            <p>Create Listing</p>
-                            <p>Watchlist</p>
-                            <p>Categories</p>
+                            <a href="{%  url 'add' %}">Create Listing</a>
+                            <a href="{%  url 'watchlist' %}">Watchlist</a>
+                            <a href="{% url 'categories' %}">Categories</a>
                         </div>
                     {% else %}
                         Not signed in.
@@ -42,7 +42,7 @@
                 {% endif %}
             </div>
         </div>
-        <div class="mainbody">
+        <div class="main-body">
             {% block body %}
             {% endblock %}
         </div>

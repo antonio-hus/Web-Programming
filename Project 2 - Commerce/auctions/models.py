@@ -11,6 +11,9 @@ class User(AbstractUser):
 class ProductCategory(models.Model):
     category = models.CharField(max_length=64)
 
+    def __str__(self):
+        return self.category
+
 
 class Listing(models.Model):
     """
@@ -27,7 +30,7 @@ class Listing(models.Model):
     title = models.CharField(max_length=64)
     description = models.CharField(max_length=256)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, related_name="listings")
-    # TODO: Add photo option for listing
+    photo = models.CharField(max_length=256, null=True, blank=True)
 
     start_price = models.DecimalField(max_digits=10, decimal_places=2)
     current_price = models.DecimalField(max_digits=10, decimal_places=2)
