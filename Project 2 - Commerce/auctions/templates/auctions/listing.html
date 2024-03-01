@@ -1,91 +1,158 @@
 {% extends "auctions/layout.html" %}
 
+{% block title %}{{ product.title }}{% endblock %}
+
 {% block body %}
 
-    <div class="product-header">
-        <h2>{{ product.title }}</h2>
-        <a href="{% url 'index' %}">Back to Listings</a>
-    </div>
+    <!-- Listing is open -->
+    {% if product.status %}
+        <div class="product-header">
+            <h2>{{ product.title }}</h2>
+            <a href="{% url 'index' %}">Back to Listings</a>
+        </div><hr>
 
-    <hr>
-    <div class="product-body">
-        <img src="{{ product.photo }}" alt="Product Image">
-        <div class="product-details">
-            <div class="upper-container">
+        <div class="product-body">
 
-                {% if user.username == product.seller.username %}
-                    <div>Closing price: {{ product.current_price }}</div>
-                    <form action="{% url 'close_listing' %}" method="POST">
-                        {% csrf_token %}
-                        <input type="submit" value="Close Auction">
-                    </form>
-                {% else %}
-                    <p>Description: {{ product.description }}</p>
-                    {% if user.is_authenticated %}
+            <img src="{{ product.photo }}" alt="Product Image">
+
+            <div class="product-details">
+
+                <div class="upper-container">
+
+                    <!-- If User is Signed In => ALLOW WatchList -->
+                    {% if user.is_authenticated and not user.username == product.seller.username %}
                         <div class="watchlist-box">
-                            {% if wishlist_status %}
-                                <form action="{% url 'add_wishlist' %}" method="POST">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="product_id" value="{{ product.id }}">
-                                    <input type="submit" value="Remove from Wishlist">
-                                </form>
-                            {% else %}
-                                <form action="{% url 'add_wishlist' %}" method="POST">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="product_id" value="{{ product.id }}">
-                                    <input type="submit" value="Add to Wishlist">
-                                </form>
-                            {% endif %}
+                            <form action="{% url 'add_wishlist' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ product.id }}">
+                                <input class="button-inverted" id="watchlist" type="submit" value="{% if wishlist_status %}Remove from Wishlist{% else %}Add to Wishlist{% endif %}">
+                            </form>
                         </div>
+                        {% elif user.username == product.seller.username %}
+                            <p style="margin-top: 50px">This is your auction</p>
+                        {% else %}
+                            <p style="margin-top: 50px">You are not logged in</p>
                     {% endif %}
 
                 </div>
-                <div class="lower-container">
-                    <div class="bids">
-                        {% if user.is_authenticated %}
-                            <div class="place-bid-box">
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <input type="number" step=".01" pattern="^\d+(?:\.\d{1,2})?$"
-                                           min={{ product.current_price }} placeholder="{{ product.current_price }}">
-                                    <input type="submit" value="Enter">
-                                </form>
-                            </div>
-                        {% else %}
-                            <p>Sign in to bid now</p>
-                        {% endif %}
+
+                    <div class="lower-container">
+
                         <hr>
-                        <div class="prices">
-                            <p>Starting Price: <span>{{ product.start_price }}$</span></p>
-                            <p>Current Price: <span>{{ product.current_price }}$</span></p>
+                        {% if user.is_authenticated and not user.username == product.seller.username %}
+                            <h5>Enter a new bid</h5>
+                        {% elif user.username == product.seller.username %}
+                            <h5>Satisfied with the sale price?</h5>
+                        {% elif not user.is_authenticated %}
+                            <h5>Do you want to buy this item?</h5>
+                        {% endif %}
+
+                        <div class="bids">
+
+                            <div class="bid-container">
+                                <!-- If the User is Signed In and not the Owner => ALLOW BIDS -->
+                                {% if user.is_authenticated and not user.username == product.seller.username %}
+                                    <div class="place-bid-box">
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <input type="number" step="0.01" min={{ minimum_bid }} placeholder="{{ product.current_price }}" name="bid">
+                                            <input type="submit" value="Enter">
+                                        </form>
+                                    </div>
+                                {% elif not user.is_authenticated %}
+                                    <a class="button" href="{% url 'login' %}">Sign in to bid now</a>
+                                {% elif user.username == product.seller.username %}
+                                    <form action="{% url 'product_page' product_id=product.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <input class="button" type="submit" value="Close Auction">
+                                    </form>
+                                {% endif %}
+                            </div>
+
+                            <hr>
+                            <div class="prices">
+                                <div class="price">
+                                    <p>Lowest Ask:</p>
+                                    <strong>{{ product.start_price }}$</strong>
+                                </div>
+                                <div class="price">
+                                    <p>Highest Bid:</p>
+                                    <strong>{{ product.current_price }}$</strong>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                {% endif %}
-                </div>
-        </div>
-    </div>
-
-    <hr>
-    <div class="comment-box">
-        <br>
-        <h5>Comments for {{ product.title }}:</h5>
-        <br>
-        {% for comment in comments%}
-            <div class="comment">
-                <div class="main-info">
-                    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fcreazilla.com%2Fnodes%2F3202933-user-circle-icon&psig=AOvVaw07lKTdQIBff3A9QQTB2bWz&ust=1709105210079000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCMDt6aL_yoQDFQAAAAAdAAAAABAD">
-                    <p class="user-name">{{ comment.reviewer.username }}</p>
-                    <hr>
-                    <p class="user-rating">{{ comment.rating }}</p>
-                </div>
-                <div class="extended-info">
-                    <p class="title">{{ comment.title }}</p>
-                    <p class="description">{{ comment.description }}</p>
-                </div>
             </div>
-        {% empty %}
-            <p>No comments to display.</p>
-        {% endfor %}
-    </div>
+        </div>
 
+        <hr>
+
+        <div class="details-section">
+            <h4>Product Details</h4>
+            <p>Category of product: {{ product.category }}</p>
+            <br>
+            <p>Description from seller: {{ product.description }}</p>
+        </div>
+
+        <hr>
+
+        <div class="comment-box">
+
+            <br><h4>Comments for {{ product.title }}:</h4><br>
+
+            <div class="add-comment-box">
+                <div class="head">
+                    <h5>Add your own comment</h5>
+                </div>
+                <hr>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input class="form-control" type="text" name="title" placeholder="Review Title..." maxlength=64>
+                    <br>
+                    <input class="form-control" type="number" step="0.1" name="rating" placeholder="Rating..."
+                           min=0.0 max=5.0>
+                    <br>
+                    <textarea class="form-control" name="description" placeholder="Review Description..." maxlength="256"></textarea>
+                    <br>
+                    <input class="button-inverted" type="submit" value="Add Comment">
+                </form>
+            </div>
+            <br>
+
+            {% for comment in comments%}
+                <div class="comment">
+
+                    <div class="main-info">
+                        <p class="user-name">Reviewed by: <strong>{{ comment.reviewer.username }}</strong></p>
+                        <hr>
+                        <p class="user-rating"><strong>{{ comment.rating }}</strong></p>
+                    </div>
+
+                    <div class="extended-info">
+                        <p class="title">Title: <strong>{{ comment.title }}</strong></p>
+                        <p class="description">Description: {{ comment.description }}</p>
+                    </div>
+
+                </div>
+
+            {% empty %}
+                <p>No comments to display.</p>
+
+            {% endfor %}
+
+        </div>
+
+    <!-- Listing is closed -->
+    {% else %}
+        <div class="closed-listing-container">
+            <h5>The auction for {{ product.title }} is closed </h5>
+            {% if winner %}
+                <p>The winner is <strong>{{ winner }}</strong>, with a last bid of <strong>{{ price }}</strong></p>
+            {% else %}
+                <p>There has been no winner</p>
+            {% endif %}
+        </div>
+
+    {% endif %}
 {% endblock %}

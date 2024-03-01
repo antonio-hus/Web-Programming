@@ -9,22 +9,29 @@ class User(AbstractUser):
 
 
 class ProductCategory(models.Model):
+    """
+    Every ProductCategory has a name
+    """
     category = models.CharField(max_length=64)
 
     def __str__(self):
+        """
+        :return: Product Category Identifier by Name
+        """
         return self.category
 
 
 class Listing(models.Model):
     """
     Every Auction should have:
+    - * one status (bool) - open / close
     - * one owner
     - * one title
     - * one description
     - * one start price
     - * one current price
-    - * one category
-    - one photo
+    - one category (optionally)
+    - one photo (optionally)
     """
     seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
     title = models.CharField(max_length=64)
@@ -33,7 +40,9 @@ class Listing(models.Model):
     photo = models.CharField(max_length=256, null=True, blank=True)
 
     start_price = models.DecimalField(max_digits=10, decimal_places=2)
-    current_price = models.DecimalField(max_digits=10, decimal_places=2)
+    current_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+    status = models.BooleanField(default=True)
 
 
 class Bid(models.Model):
@@ -44,6 +53,7 @@ class Bid(models.Model):
     - * one value
     """
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name="bids")
+
     bidder = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bids")
     bid = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -61,10 +71,9 @@ class Comment(models.Model):
     Restrictions - review value (0.0 - 5.0)
     """
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name="comments")
-    reviewer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
 
+    reviewer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
     rating = models.DecimalField(max_digits=3, decimal_places=1)
     title = models.CharField(max_length=64)
     description = models.CharField(max_length=256)
-    # TODO: Add photo option for comment
 

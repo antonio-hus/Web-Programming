@@ -5,7 +5,8 @@ from django.shortcuts import render
 from django.urls import reverse
 from django import forms
 
-from .models import User, Listing, ProductCategory
+from .models import User, Listing, ProductCategory, Bid, Comment
+from decimal import Decimal
 
 
 # Forms Below
@@ -18,11 +19,18 @@ class ListingForm(forms.Form):
 
 
 # Views Below
+# Home Page
 def index(request):
-    listings = Listing.objects.all()
-    return render(request, "auctions/index.html", {"listings": listings})
+    """
+    Returns a homepage containing all listings on the website
+    """
+    active_listings = Listing.objects.filter(status=True)
+    closed_listings = Listing.objects.filter(status=False)
+    return render(request, "auctions/index.html",
+                  {"active_listings": active_listings, "closed_listings": closed_listings})
 
 
+# User Authentication Related Views
 def login_view(request):
     if request.method == "POST":
 
@@ -75,22 +83,85 @@ def register(request):
         return render(request, "auctions/register.html")
 
 
+# Product Page View
 def product(request, product_id):
+    """
+    Returns the Product Page given by the product's ID
+    :param product_id: Integer Number ( Listing's Primary Key )
+    """
+
+    # Finding Product and Comments to Render
     the_product = Listing.objects.filter(id=product_id).first()
-    comments = the_product.comments.all()
-    wishlist_status = False
-    if request.user.is_authenticated:
-        wishlist_status = request.user.wishlist.filter(id=product_id).exists()
-    if request.method == "POST":
-        pass
-    return render(request, "auctions/listing.html", {"product": the_product, "comments": comments, "wishlist_status": wishlist_status} )
+
+    # Checking if the Product Auction Status is Open (True)
+    # Display accordingly
+
+    if the_product.status:
+        comments = the_product.comments.all()
+
+        # Users signed in can watchlist an item ( Item initally not watchlisted )
+        wishlist_status = False
+        if request.user.is_authenticated:
+            wishlist_status = request.user.wishlist.filter(id=product_id).exists()
+
+        # Registering a Bid
+        # Minimum Bids Condition
+        if the_product.current_price == 0:
+            minimum_bid = the_product.start_price
+        else:
+            minimum_bid = the_product.current_price + Decimal('0.1')*the_product.start_price
+
+        # Getting POST Form Data
+        if request.method == "POST":
+
+            # Submitting the new Bid Form
+            if "bid" in request.POST:
+                proposed_bid = request.POST.get("bid")
+
+                # Saving new current_price and adding a new bidder
+                the_product.current_price = proposed_bid
+                the_product.save()
+
+                new_bid = Bid(listing=the_product, bidder=request.user, bid=proposed_bid)
+                new_bid.save()
+
+            if "rating" in request.POST:
+                title = request.POST.get("title")
+                rating = request.POST.get("rating")
+                description = request.POST.get("description")
+
+                proposed_comment = Comment(reviewer=request.user, listing=the_product,
+                                           title=title, rating=rating, description=description)
+                proposed_comment.save()
+
+            # Closing the Auction Form
+            else:
+                the_product.status = False
+                the_product.save()
+
+            return HttpResponseRedirect(reverse('product_page', kwargs={"product_id": product_id}))
+
+        return render(request, "auctions/listing.html", {"product": the_product, "comments": comments,
+                                                         "wishlist_status": wishlist_status, "minimum_bid": minimum_bid})
+    else:
+        # Computing Winner
+        winner = None
+        winner_bid = None
+        last_bid = the_product.bids.last()
+        if last_bid:
+            winner = last_bid.bidder.username
+            winner_bid = last_bid.bid
+            # NOTE: ACTUAL PAYMENT HANDLING WOULD GO HERE
+
+        return render(request, "auctions/listing.html", {"product": the_product, "winner": winner, "price": winner_bid})
 
 
-def close_listing(request):
-    pass
-
-
+# Add a new Listing Functionality
 def add(request):
+    """
+    Renders Listing Editor Page
+    Collects submitted data and adds a new Listing ( containing or not the optional fields )
+    """
     if request.method == "POST":
         form = ListingForm(request.POST)
         if form.is_valid():
@@ -100,7 +171,7 @@ def add(request):
             category = form.cleaned_data["category"]
             image_url = form.cleaned_data["image_url"]
             start_bid = form.cleaned_data["start_bid"]
-            current_bid = start_bid
+            current_bid = 0
 
             if category and image_url:
                 new_listing = Listing(seller=seller, title=title, description=description, category=category, photo=image_url, start_price=start_bid, current_price=current_bid)
@@ -121,13 +192,28 @@ def add(request):
     return render(request, "auctions/add.html", {"form": form})
 
 
+# Watch List Page
 def watchlist(request):
+    """
+    Renders the user's watchlist
+    """
     user = request.user
     items = user.wishlist.all()
+
+    # Removing watch listed auctions that are no longer active
+    for item in items:
+        if not item.status:
+            user.wishlist.remove(item)
+
     return render(request, "auctions/watchlist.html", {"items": items})
 
 
+# Add / Remove from Watch List Feature
 def add_wishlist(request):
+    """
+    Allows users to add to their watch list if the product was not added yet
+    Otherwise, allows users to remove from the wishlist
+    """
     if request.method == "POST":
         product_id = request.POST.get('product_id')
         product = Listing.objects.filter(id=product_id).first()
@@ -139,12 +225,19 @@ def add_wishlist(request):
     return HttpResponseRedirect(reverse('watchlist'))
 
 
+# Categories Related Pages
 def categories(request):
+    """
+    Renders all categories from our store
+    """
     categs = ProductCategory.objects.all()
     return render(request, "auctions/categories.html", {"categories": categs})
 
 
 def category(request, name):
+    """
+    Renders all open auctions from a given category
+    """
     category = ProductCategory.objects.filter(category=name).first()
-    products = Listing.objects.filter(category=category)
+    products = Listing.objects.filter(category=category, status=True)
     return render(request, "auctions/category.html", {"category_name": name, "products": products})

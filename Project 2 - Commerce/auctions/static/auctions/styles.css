@@ -15,6 +15,26 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Reusables */
+.button, .button-inverted {
+    width: 200px;
+
+    border: 1px solid white;
+    border-radius: 10px;
+
+    padding: 10px;
+}
+
+.button {
+    background-color: white;
+    color: black;
+}
+
+.button-inverted {
+    background-color: black;
+    color: white;
+}
+
 /* Sidebar / Main Body Sectioning */
 .sidebar {
 
@@ -174,19 +194,19 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 50px
-}
+    align-content: center;
+    text-align: center;
 
-.product-body .watchlist-box button{
-
-    height: 30px;
-    width: 100px;
-
-    border: 1px solid black;
-    border-radius: 10px;
+    margin-left: 50px;
 
     background-color: black;
-    color: white;
+    border-radius: 10px;
+
+    color: white
+}
+
+.product-body #watchlist {
+    margin-top: 40px;
 }
 
 .product-body .bids {
@@ -203,7 +223,8 @@ body {
     color: white;
 }
 
-.product-body .place-bid-box {
+.product-body .place-bid-box, .bid-container {
+    width: 350px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -223,8 +244,8 @@ body {
     margin-top: 10px;
 }
 
-.product-body .bids hr {
-    width: 90%;
+.product-body hr {
+    width: 350px;
     background-color: white;
 }
 
@@ -235,18 +256,41 @@ body {
     align-content: center;
 }
 
-/* Product Comments Styling */
-.comment-box .comment {
-    border: 1px solid black;
-    border-collapse: collapse;
+.product-body .product-details .mid-container {
+    display: flex;
+    flex-direction: column;
+
+    align-content: center;
+    justify-content: center;
 }
 
-.comment-box .comment .main-info {
+.product-body .product-details .lower-container .bids .prices .price {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.product-body .product-details .lower-container .bids .prices .price strong {
+    margin-top: -10px;
+}
+
+/* Product Comments Styling */
+.comment-box .comment {
+    margin-bottom: 15px;
+}
+
+.comment-box .main-info {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding: 10px;
+
+    padding: 15px 30px 0px 12px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    background-color: black;
+    color:white;
 }
 
 .comment-box .comment img {
@@ -256,16 +300,6 @@ body {
     margin-right: 10px;
 }
 
-.comment-box .comment .user-name {
-    font-weight: bold;
-    color: black;
-    margin-right: 20px;
-}
-
-.comment-box .comment .user-rating {
-    font-weight: bold;
-}
-
 .comment-box .comment .extended-info {
     display: flex;
     flex-direction: column;
@@ -273,14 +307,15 @@ body {
     padding: 10px;
 
     border: 1px solid black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-.comment-box .comment .extended-info .title {
+.add-comment-box {
+    border: 1px solid black;
+    border-radius: 10px;
 
-}
-
-.comment-box .comment .extended-info .description {
-
+    padding: 20px;
 }
 
 /* Listing Editor Page Styling */

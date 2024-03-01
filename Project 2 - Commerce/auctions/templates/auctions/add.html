@@ -1,8 +1,13 @@
 {% extends "auctions/layout.html" %}
 
+{% block title %}Listing Editor{% endblock %}
+
 {% block body %}
+
     <h1>Listing Editor</h1>
     <a href="{% url 'index' %}" class="back-link">Back to the Listings Page</a>
+    <hr>
+
     <div class="editor-container">
         <form method="POST" class="post-listing">
             {% csrf_token %}
@@ -10,4 +15,5 @@
             <input type="submit" value="Post" class="post-button">
         </form>
     </div>
+
 {% endblock %}
