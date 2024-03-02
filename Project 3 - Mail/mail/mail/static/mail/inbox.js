@@ -60,6 +60,7 @@ function load_mailbox(mailbox) {
   .then(response => response.json())
   .then(emails => {
     emails.forEach(email => {
+
       const email_block = document.createElement('div');
       const left_side = document.createElement('div');
       const right_side = document.createElement('div');
@@ -81,7 +82,7 @@ function load_mailbox(mailbox) {
       email_block.appendChild(left_side);
       email_block.appendChild(right_side);
 
-      email_block.addEventListener('click', () => load_email(email.id))
+      email_block.addEventListener('click', () => load_email(email.id, mailbox))
       email.read?email_block.className = 'email-preview-read':email_block.className = 'email-preview-unread';
 
       document.querySelector('#emails-view').append(email_block);
@@ -89,7 +90,33 @@ function load_mailbox(mailbox) {
   });
 }
 
-function load_email(email_id){
+function archive_mail(email_id, direction){
+  // Direction is True means we archive
+  // Otherwise un-archive
+  fetch(`/emails/${email_id}`, {method:'PUT', body:JSON.stringify({archived:direction})})
+  .then(response => {
+    if (response.ok) {
+      // If successful, reload the mailbox content
+      if (direction) {
+        // If direction is true (archive), reload the inbox
+        load_mailbox('inbox');
+      } else {
+        // If direction is false (unarchive), reload the archive
+        load_mailbox('inbox');
+      }
+    } else {
+      console.error('Error archiving email:', response.statusText);
+    }
+  })
+  .catch(error => {
+    console.error('Network error:', error);
+  });
+
+  // Loading the inbox
+  load_mailbox('inbox')
+}
+
+function load_email(email_id, mailbox){
 
   // Clear the email view
   document.querySelector('#email-view').innerHTML = '';
@@ -105,9 +132,10 @@ function load_email(email_id){
   .then(email => {
 
     // Defining HTML Elements
-    const email_block = document.createElement('div')
+    const email_block = document.createElement('div');
     const header_container = document.createElement('div');
-    const body_container = document.createElement('div')
+    const body_container = document.createElement('div');
+    const button_container = document.createElement('div');
     const separator = document.createElement('hr');
 
     const sender = document.createElement('div');
@@ -127,12 +155,27 @@ function load_email(email_id){
     reply_button.innerHTML = 'Reply';
     reply_button.className = "btn btn-sm btn-outline-primary";
 
+    // Archived / Unarchived Button Logic
+    const archive_button = document.createElement('button');
+    archive_button.className = "btn btn-sm btn-outline-primary";
+    archive_button.style.marginRight = '5px';
+    if(mailbox==='inbox'){
+      archive_button.innerHTML = 'Archive';
+      archive_button.addEventListener('click', () => {archive_mail(email.id, true)})
+      button_container.appendChild(archive_button);
+    }else if(mailbox==='archive'){
+      archive_button.innerHTML = 'Unarchive';
+      archive_button.addEventListener('click', () => {archive_mail(email.id, false)})
+      button_container.appendChild(archive_button);
+    }
+
     // Structuring HTML Elements
+    button_container.appendChild(reply_button);
     header_container.appendChild(sender);
     header_container.appendChild(recipients);
     header_container.appendChild(subject);
     header_container.appendChild(timestamp);
-    header_container.appendChild(reply_button);
+    header_container.appendChild(button_container);
     body_container.appendChild(body);
     email_block.appendChild(header_container);
     email_block.appendChild(separator);
