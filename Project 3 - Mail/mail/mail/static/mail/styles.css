@@ -1,3 +1,25 @@
 textarea {
     min-height: 400px;
 }
+
+.email-preview-unread, .email-preview-read {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 20px;
+    margin: 15px 0px;
+
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.email-preview-unread {
+    border-color: black;
+    color: black;
+}
+
+.email-preview-read {
+    border-color: rgb(128, 128, 128);
+    color: rgb(128, 128, 128);
+}
