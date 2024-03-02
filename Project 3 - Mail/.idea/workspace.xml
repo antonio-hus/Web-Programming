@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df92b569-56c0-49bf-9a9b-9db3bb464736" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mail/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mail/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mail/mail/static/mail/inbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/mail/mail/static/mail/inbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail/mail/static/mail/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/mail/mail/static/mail/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mail/mail/templates/mail/inbox.html" beforeDir="false" afterPath="$PROJECT_DIR$/mail/mail/templates/mail/inbox.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +48,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709391856558</updated>
-      <workItem from="1709391861011" duration="5825000" />
+      <workItem from="1709391861011" duration="8850000" />
     </task>
     <servers />
   </component>

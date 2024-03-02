@@ -14,6 +14,7 @@ function compose_email() {
 
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#email-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
 
   // Clear out composition fields
@@ -48,6 +49,7 @@ function load_mailbox(mailbox) {
   
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
+  document.querySelector('#email-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'none';
 
   // Show the mailbox name
@@ -78,9 +80,73 @@ function load_mailbox(mailbox) {
       right_side.appendChild(reply_button);
       email_block.appendChild(left_side);
       email_block.appendChild(right_side);
-      email.read?email_block.className = 'email-preview-unread':email_block.className = 'email-preview-read';
+
+      email_block.addEventListener('click', () => load_email(email.id))
+      email.read?email_block.className = 'email-preview-read':email_block.className = 'email-preview-unread';
 
       document.querySelector('#emails-view').append(email_block);
     });
   });
+}
+
+function load_email(email_id){
+
+  // Clear the email view
+  document.querySelector('#email-view').innerHTML = '';
+
+  // Show the email and hide other views
+  document.querySelector('#email-view').style.display = 'block';
+  document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#compose-view').style.display = 'none';
+
+  // Fetch the Email Data
+  fetch(`/emails/${email_id}`)
+  .then(response => response.json())
+  .then(email => {
+
+    // Defining HTML Elements
+    const email_block = document.createElement('div')
+    const header_container = document.createElement('div');
+    const body_container = document.createElement('div')
+    const separator = document.createElement('hr');
+
+    const sender = document.createElement('div');
+    const recipients = document.createElement('div');
+    const subject = document.createElement('div');
+    const timestamp = document.createElement('div');
+    const reply_button = document.createElement('button');
+
+    const body = document.createElement('div');
+
+    // Initializing HTML Elements
+    sender.innerHTML = `<strong>From:</strong> ${email.sender}`;
+    recipients.innerHTML = `<strong>To:</strong> ${email.recipients}`;
+    subject.innerHTML = `<strong>Subject:</strong> ${email.subject}`;
+    timestamp.innerHTML = `<strong>Timestamp:</strong> ${email.timestamp}`;
+    body.innerHTML = `${email.body}`;
+    reply_button.innerHTML = 'Reply';
+    reply_button.className = "btn btn-sm btn-outline-primary";
+
+    // Structuring HTML Elements
+    header_container.appendChild(sender);
+    header_container.appendChild(recipients);
+    header_container.appendChild(subject);
+    header_container.appendChild(timestamp);
+    header_container.appendChild(reply_button);
+    body_container.appendChild(body);
+    email_block.appendChild(header_container);
+    email_block.appendChild(separator);
+    email_block.appendChild(body_container);
+
+    fetch(`/emails/${email.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+          read: true
+      })
+    })
+
+    // Add to Main Body HTML
+    document.querySelector('#email-view').append(email_block);
+  });
+
 }
