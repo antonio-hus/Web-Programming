@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#inbox').addEventListener('click', () => load_mailbox('inbox'));
   document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
   document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
-  document.querySelector('#compose').addEventListener('click', compose_email);
+  document.querySelector('#compose').addEventListener('click', () => {compose_email(false, null)});
 
   // By default, load the inbox
   load_mailbox('inbox');
 });
 
-function compose_email() {
+function compose_email(reply, email) {
 
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
@@ -18,9 +18,20 @@ function compose_email() {
   document.querySelector('#compose-view').style.display = 'block';
 
   // Clear out composition fields
-  document.querySelector('#compose-recipients').value = '';
-  document.querySelector('#compose-subject').value = '';
-  document.querySelector('#compose-body').value = '';
+  if(reply){
+    document.querySelector('#compose-recipients').value = email.sender;
+    if(email.subject.startsWith('Re:')) {
+      document.querySelector('#compose-subject').value = `${email.subject}`;
+    }else{
+      document.querySelector('#compose-subject').value = `Re:${email.subject}`;
+    }
+    document.querySelector('#compose-body').value = `On ${email.timestamp} ${email.sender} wrote:\n${email.body}\n\n`;
+    document.querySelector('#compose-body').focus()
+  }else {
+    document.querySelector('#compose-recipients').value = '';
+    document.querySelector('#compose-subject').value = '';
+    document.querySelector('#compose-body').value = '';
+  }
 
   // On submit, make a POST request to /emails
   document.querySelector('#compose-form').onsubmit = () => {
@@ -67,7 +78,9 @@ function load_mailbox(mailbox) {
       const sender = document.createElement('strong');
       const subject = document.createElement('p');
       const timestamp = document.createElement('div');
+
       const reply_button = document.createElement('button');
+      reply_button.onclick = () => {compose_email(true, email)}
 
       sender.innerHTML = `${email.sender}`;
       subject.innerHTML = `${email.subject}`;
@@ -143,6 +156,7 @@ function load_email(email_id, mailbox){
     const subject = document.createElement('div');
     const timestamp = document.createElement('div');
     const reply_button = document.createElement('button');
+    reply_button.onclick = () => {compose_email(true, email)}
 
     const body = document.createElement('div');
 
