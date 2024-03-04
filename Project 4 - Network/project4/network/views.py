@@ -11,6 +11,12 @@ def index(request):
     return render(request, "network/index.html")
 
 
+def profile(request, username):
+    if User.objects.filter(username=username).exists():
+        return HttpResponse(username)
+    return HttpResponse("user not found")
+
+
 def login_view(request):
     if request.method == "POST":
 
