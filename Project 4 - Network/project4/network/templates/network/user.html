@@ -1,7 +1,10 @@
 {% extends "network/layout.html" %}
 {% load static %}
 
-{% block script %} <script src="{% static 'network/user_profile.js' %}"></script>{% endblock %}
+{% block script %}
+    <script src="{% static 'network/utils.js' %}"></script>
+    <script src="{% static 'network/user_profile.js' %}"></script>
+{% endblock %}
 
 {% block body %}
     <div id="user-page" data-username="{{ username }}">

@@ -1,10 +1,8 @@
-#new-post-box {
-    border: 1px solid #cbcbcb;
-    border-radius: 10px;
-    padding: 25px 20px 25px 20px;
-    margin: 25px;
-}
 
+/* GENERAL STYLESHEET */
+
+/* GENERAL ELEMENTS STYLESHEET */
+/* Individual Post Box */
 .post {
     border: 1px solid #cbcbcb;
     border-radius: 10px;
@@ -12,6 +10,18 @@
     margin: 25px;
 }
 
+
+/* HOMEPAGE STYLESHEET */
+/* New Post Box */
+#new-post-box {
+    border: 1px solid #cbcbcb;
+    border-radius: 10px;
+    padding: 25px 20px 25px 20px;
+    margin: 25px;
+}
+
+/* USER PROFILE STYLESHEET */
+/* User Profile Head */
 #user-header {
     display: flex;
     flex-direction: column;
@@ -20,7 +30,7 @@
     margin: 20px;
     padding: 20px;
 }
-
+/* User Profile Follower Information Box */
 #user-follow-box {
     display: flex;
     flex-direction: row;

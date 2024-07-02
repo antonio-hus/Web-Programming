@@ -1,3 +1,4 @@
+# Imports Section
 from django.test import TestCase
 
-# Create your tests here.
+# Tests go below

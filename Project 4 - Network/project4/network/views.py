@@ -1,3 +1,5 @@
+# IMPORTS SECTION
+# Framework Defined
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect, JsonResponse
@@ -5,21 +7,28 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.utils import timezone
 from django.core import serializers
-
+# User Defined
 from .models import User, Post
 from .forms import PostForm
 
 
+################################
+########### SCREENS ############
+################################
+
+# Homepage - All Posts Page
 def index(request):
     form = PostForm()
     return render(request, "network/index.html", {"form": form})
 
 
+# Following Posts Page
 def following(request):
     form = PostForm()
     return render(request, "network/following.html", {"form": form})
 
 
+# User Profile Page
 def user(request, username: str):
     return render(request, "network/user.html", {"username": username})
 
@@ -105,19 +114,28 @@ def get_user(request, username: str):
 
 def add_post(request):
     if request.method == "POST":
+
+        # Getting form information
         form = PostForm(request.POST)
         if form.is_valid():
+
+            # Gathering data
             user = request.user
             content = form.cleaned_data['content']
+
+            # Adding new post
             Post.objects.create(owner=user, body=content, timestamp=timezone.now())
+
+            # Adding was successful, redirect to homepage
             return HttpResponseRedirect(reverse("index"))
 
-    else:
-        return HttpResponseRedirect(reverse("index"))
+    # Methods was not post, failed add post method, redirect to homepage
+    return HttpResponseRedirect(reverse("index"))
 
 
 def follow_user(request, username):
     if request.method == "POST":
+
         # Getting the user by username
         user = User.objects.get(username=username)
 

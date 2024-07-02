@@ -1,8 +1,8 @@
-
+# Imports Section
 from django.urls import path
-
 from . import views
 
+# URL Patterns
 urlpatterns = [
 
     # Pages
@@ -15,12 +15,12 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register"),
 
-    # Get Methods
+    # Endpoints - GET Method
     path("get_all_posts/", views.get_all_posts, name="get_all_posts"),
     path("get_following_posts/", views.get_following_posts, name="get_following_posts"),
     path("get_user/<str:username>", views.get_user, name="get_user"),
 
-    # Post Methods
+    # Endpoints - POST Method
     path("add_post", views.add_post, name="add_post"),
     path("follow_user/<str:username>/", views.follow_user, name="follow_user"),
 ]

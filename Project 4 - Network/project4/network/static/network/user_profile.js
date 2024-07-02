@@ -1,3 +1,5 @@
+// This module defines User Profile Page Behaviour
+// Page Loaded Event
 document.addEventListener("DOMContentLoaded", () => {
 
     // Load Profile on visit
@@ -9,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+// Getting Cookie Information
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -25,6 +28,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
+// Loading the user's profile
 function load_profile(username)
 {
 
@@ -122,36 +126,7 @@ function load_profile(username)
         userBodyBox.id = 'user-body';
 
         // Adding posts to the user profile body
-        data.posts.forEach(post => {
-            // Creating a container for individual post
-            const postElement = document.createElement('div');
-            postElement.className = 'post';
-
-            // Adding owner username
-            const userElement = document.createElement('h5');
-            userElement.textContent = post.owner;
-
-            // Adding post content
-            const contentElement = document.createElement('p');
-            contentElement.textContent = post.body;
-
-            // Adding timestamp
-            const timeStampElement = document.createElement('span');
-            timeStampElement.textContent = post.timestamp;
-
-            // Adding likes count
-            const likesCountElement = document.createElement('p');
-            likesCountElement.textContent = `❤️ ${post.likesCount}`;
-
-            // Appending elements to post container
-            postElement.appendChild(userElement);
-            postElement.appendChild(contentElement);
-            postElement.appendChild(timeStampElement);
-            postElement.appendChild(likesCountElement);
-
-            // Appending post container to user body box
-            userBodyBox.appendChild(postElement);
-        });
+        load_post_data(data.posts, userBodyBox);
 
         // Appending user body box to user page container
         userProfileElement.appendChild(userBodyBox);
