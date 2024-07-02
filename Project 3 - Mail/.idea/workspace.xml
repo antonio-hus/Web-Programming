@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df92b569-56c0-49bf-9a9b-9db3bb464736" name="Changes" comment="" />
+    <list default="true" id="df92b569-56c0-49bf-9a9b-9db3bb464736" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/migrations/0002_comment_like_post_user_follower_user_following.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/migrations/0002_user_followers_user_following_post_like_comment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/templates/network/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/templates/network/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/templates/network/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/templates/network/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +25,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2d8ZqB7vAbhVe8AjOrKP0jvWZq9" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,6 +40,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/anton/OneDrive/Documents/GitHub/Graph-Algorithms",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -44,6 +57,10 @@
       <option name="presentableId" value="Default" />
       <updated>1709391856558</updated>
       <workItem from="1709391861011" duration="12398000" />
+      <workItem from="1709664766839" duration="835000" />
+      <workItem from="1709705021423" duration="270000" />
+      <workItem from="1709725967501" duration="3000" />
+      <workItem from="1709830288562" duration="34000" />
     </task>
     <servers />
   </component>
