@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2595e3d3-7105-4016-8d17-49b622458d48" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/project4/network/static/network/homepage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project4/network/static/network/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project4/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project4/network/static/network/following.js" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/static/network/following.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/static/network/network.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/static/network/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/static/network/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/network/static/network/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/static/network/homepage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project4/network/static/network/user_profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/static/network/user_profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/network/static/network/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/static/network/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project4/network/templates/network/following.html" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/templates/network/following.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project4/network/templates/network/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/templates/network/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project4/network/templates/network/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/templates/network/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project4/network/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project4/network/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/views.py" afterDir="false" />
     </list>
@@ -53,23 +47,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/anton/OneDrive/Documents/GitHub/Learning-Web-Programming/Project 4 - Network",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/anton/OneDrive/Documents/GitHub/Learning-Web-Programming/Project 4 - Network&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -83,7 +77,10 @@
       <workItem from="1711206707749" duration="863000" />
       <workItem from="1711208384824" duration="1281000" />
       <workItem from="1714321503229" duration="1538000" />
-      <workItem from="1719853587233" duration="18595000" />
+      <workItem from="1719853587233" duration="19255000" />
+      <workItem from="1719924720898" duration="4364000" />
+      <workItem from="1719948320838" duration="3259000" />
+      <workItem from="1719990537113" duration="4541000" />
     </task>
     <servers />
   </component>

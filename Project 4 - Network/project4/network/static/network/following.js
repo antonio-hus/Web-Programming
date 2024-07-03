@@ -2,15 +2,34 @@
 // Page Loaded Event
 document.addEventListener('DOMContentLoaded', ()=>{
 
-    // Loading Following User's Posts Screen on Following Page
-    load_following_posts()
+    // Initial page number
+    let currentPage = 1;
+
+    // Loading Following Posts Screen on Following Page
+    load_following_posts(currentPage)
+
+    // Event listener for previous page button
+    const previousPageButton = document.getElementById('previous-page');
+    previousPageButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            load_following_posts(currentPage);
+        }
+    });
+
+    // Event listener for next page button
+    const nextPageButton = document.getElementById('next-page');
+    nextPageButton.addEventListener('click', () => {
+        currentPage++;
+        load_following_posts(currentPage);
+    });
 });
 
-function load_following_posts()
+function load_following_posts(pageNumber)
 {
 
    // Fetching following posts
-   fetch('/get_following_posts/')
+   fetch(`/get_following_posts/?page=${pageNumber}`)
        .then(response => response.json())
        .then(data => {
 
@@ -19,7 +38,10 @@ function load_following_posts()
             postsContainer.innerHTML = '';
 
             // Loading posts
-            load_post_data(data,postsContainer);
+            load_post_data(data.posts,postsContainer);
+
+            // Update pagination controls based on pagination info
+            updatePaginationControls(data.pagination);
        })
 
        // Error fetching data
