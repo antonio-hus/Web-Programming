@@ -91,4 +91,4 @@ Task: Design a Twitter-like social network website for making posts and followin
 - **JavaScript**, **HTML**, **CSS**, **Bootstrap**: Used to develop the front-ends of the applications
 
 ## License
-The projects are developed following the CS50's Web Programming with Python and Javascript Course lab requirments and thus fall under the Harvard's license - [License Page](https://cs50.harvard.edu/web/2020/license/).  
+The projects are developed following the CS50's Web Programming with Python and Javascript Course lab requirments and thus fall under Harvard's license - [License Page](https://cs50.harvard.edu/web/2020/license/).  
