@@ -1,6 +1,9 @@
 # Web Programming
+[Watch the Course Introduction](https://youtu.be/Nn7EX3zkGUo)
+For more details on the course contents check the [Official Course Page](https://cs50.harvard.edu/web/2020/).
+
 ## Overview
-The Web Programming Repository contains the projects made following Harvard's CS50 Web Programming with Python and JavaScript Course [Official Course Page](https://cs50.harvard.edu/web/2020/).
+The Web Programming Repository contains the projects made following Harvard's CS50 Web Programming with Python and JavaScript Course.
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
