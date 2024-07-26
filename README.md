@@ -63,20 +63,27 @@ To run the apps locally, follow these steps:
     ```
 
 ## Projects Table
-1. **Search**:  
+You can view more in-app images in the Images folder:  
+  
+1. **Search**:
 Task: Design a front-end for Google Search, Google Image Search, and Google Advanced Search.
-
+![Search Page](Images/Search/search-view.png)   
+  
 2. **Wiki**:  
 Task: Design a Wikipedia-like online encyclopedia.
-
+![Search Page](Images/Wiki/home-view.png)
+  
 3. **Auctions**:  
 Task: Design an eBay-like e-commerce auction site that will allow users to post auction listings, place bids on listings, comment on those listings, and add listings to a “watchlist.”
-   
+![Home Page](Images/Auctions/home-view.png)
+     
 4. **Mail**:  
 Task: Design a front-end for an email client that makes API calls to send and receive emails.
-
+![Inbox Page](Images/Mail/inbox-view.png)
+  
 5. **Social Network**:  
 Task: Design a Twitter-like social network website for making posts and following users.
+![Home Page](Images/Network/home-view.png)
 
 ## Technologies Used
 - **Django**: Backend Framework used to develop the backend of the applications.
