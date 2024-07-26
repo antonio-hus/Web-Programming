@@ -1,5 +1,5 @@
 # Web Programming
-[Course Thumbnail](Images/harvard.png)  
+![Course Thumbnail](https://github.com/antonio-hus/Web-Programming/raw/main/images/harvard.png)
 For more details on the course contents check the [Official Course Page](https://cs50.harvard.edu/web/2020/).
 
 ## Overview
