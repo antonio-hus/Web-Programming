@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df92b569-56c0-49bf-9a9b-9db3bb464736" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/migrations/0002_comment_like_post_user_follower_user_following.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/migrations/0002_user_followers_user_following_post_like_comment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/templates/network/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/templates/network/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/templates/network/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/templates/network/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 4 - Network/project4/network/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 4 - Network/project4/network/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project 2 - Commerce/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 2 - Commerce/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mail/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +31,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/anton/OneDrive/Documents/GitHub/Graph-Algorithms",
+    "last_opened_file_path": "C:/Users/anton/OneDrive/Documents/GitHub/Learning-Web-Programming/Project 3 - Mail",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -61,6 +52,7 @@
       <workItem from="1709705021423" duration="270000" />
       <workItem from="1709725967501" duration="3000" />
       <workItem from="1709830288562" duration="34000" />
+      <workItem from="1721992567956" duration="137000" />
     </task>
     <servers />
   </component>
