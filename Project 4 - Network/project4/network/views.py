@@ -178,7 +178,7 @@ def get_user(request, username: str):
         # If page is not an integer, deliver first page.
         paginated_posts = paginator.page(1)
     except EmptyPage:
-        
+
         # If page is out of range (e.g. 9999), deliver last page of results.
         paginated_posts = paginator.page(paginator.num_pages)
 

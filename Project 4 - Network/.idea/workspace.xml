@@ -6,15 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2595e3d3-7105-4016-8d17-49b622458d48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project4/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/static/network/following.js" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/static/network/following.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/static/network/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/static/network/homepage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/static/network/user_profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/static/network/user_profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/static/network/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/static/network/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/templates/network/following.html" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/templates/network/following.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/templates/network/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/templates/network/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/templates/network/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/templates/network/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/network/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project4/network/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project4/network/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +71,9 @@
       <workItem from="1719853587233" duration="19255000" />
       <workItem from="1719924720898" duration="4364000" />
       <workItem from="1719948320838" duration="3259000" />
-      <workItem from="1719990537113" duration="4541000" />
+      <workItem from="1719990537113" duration="4817000" />
+      <workItem from="1720515146914" duration="205000" />
+      <workItem from="1720977717630" duration="28000" />
     </task>
     <servers />
   </component>
