@@ -7,6 +7,7 @@ The Web Programming Repository contains the projects made following Harvard's CS
  
 ## Table of Contents
 - [Prerequisites](#prerequisites)
+- [Installation](#installation)
 - [Projects Table](#project-table)
 - [Technologies Used](#technologies-used)
 - [License](#license)
@@ -45,6 +46,21 @@ Before running the apps on your system, ensure you have the following:
     - **Windows**: Download and install Git from [Git for Windows](https://gitforwindows.org/).
 
 4. **Internet Connection**: Required to download the repository and Docker images.
+
+## Installation
+To run the apps locally, follow these steps:
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/antonio-hus/Web-Programming.git
+    cd Web-Programming/PROJECT_NAME
+    ```
+
+2. Start the Django Applications:
+    ```sh
+    # Navigate to folder that contains manage.py and run:
+    python manage.py runserver
+    ```
 
 ## Projects Table
 1. **Search**:  
