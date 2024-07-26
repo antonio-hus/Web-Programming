@@ -1,10 +1,10 @@
 # Web Programming
-![Course Thumbnail](https://github.com/antonio-hus/Web-Programming/raw/main/images/harvard.png)
+![Course Thumbnail](Images/harvard.png)  
 For more details on the course contents check the [Official Course Page](https://cs50.harvard.edu/web/2020/).
 
 ## Overview
-The Web Programming Repository contains the projects made following Harvard's CS50 Web Programming with Python and JavaScript Course.
-
+The Web Programming Repository contains the projects made following Harvard's CS50 Web Programming with Python and JavaScript Course.  
+ 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Projects Table](#project-table)
